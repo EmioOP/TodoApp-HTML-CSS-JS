@@ -2,9 +2,11 @@ const inputField = document.getElementById("todo-input")
 const addButton = document.getElementById("add-task-btn")
 const itemList = document.getElementById("todo-list")
 
+//creating array for adding task
+let tasks = [] 
 
-let tasks = []
 
+//retrieve tasks data from local storage and converting to array to array when the window is load
 window.addEventListener("load", () => {
     const tasksFromLocalStorage = JSON.parse(localStorage.getItem("tasks"))
     console.log(tasksFromLocalStorage)
@@ -17,7 +19,7 @@ window.addEventListener("load", () => {
     }
 })
 
-
+//for adding the new Task
 addButton.addEventListener("click", () => {
     const todoText = inputField.value.trim()
     if (todoText === "") return;
@@ -37,7 +39,7 @@ addButton.addEventListener("click", () => {
 
 
 
-
+//for rendering each tasks 
 function renderTask(task) {
     const listItem = document.createElement("li")
     listItem.textContent = task.text
